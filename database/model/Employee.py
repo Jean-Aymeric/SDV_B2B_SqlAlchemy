@@ -55,3 +55,27 @@ class Employee(AbstractEntity):
     @property
     def Dept_no(self) -> str:
         return self.dept_no
+
+    @classmethod
+    def getAll(cls):
+        with Session(Engine.getEngine()) as session:
+            return session.query(cls).all()
+
+    def __repr__(self):
+        return (f"Employee(emp_no={self.emp_no}, "
+                f"birth_date={self.birth_date}, "
+                f"first_name={self.first_name}, "
+                f"last_name={self.last_name}, "
+
+    def toDict(self):
+        return {
+            "emp_no": self.emp_no,
+            "birth_date": self.birth_date,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "gender": self.gender,
+            "hire_date": self.hire_date,
+            "salary": self.salary,
+            "title": self.title,
+            "dept_no": self.dept_no
+        }
