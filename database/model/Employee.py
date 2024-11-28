@@ -1,7 +1,4 @@
-from tkinter.tix import INTEGER
-from winreg import EnumKey
-
-from sqlalchemy import ForeignKey, Date, String, Enum
+from sqlalchemy import ForeignKey, Date, String, Enum, INTEGER
 from sqlalchemy.orm import Session, Mapped, mapped_column
 
 from database import Engine
@@ -56,16 +53,16 @@ class Employee(AbstractEntity):
     def Dept_no(self) -> str:
         return self.dept_no
 
-    @classmethod
-    def getAll(cls):
-        with Session(Engine.getEngine()) as session:
-            return session.query(cls).all()
-
     def __repr__(self):
         return (f"Employee(emp_no={self.emp_no}, "
                 f"birth_date={self.birth_date}, "
                 f"first_name={self.first_name}, "
                 f"last_name={self.last_name}, "
+                f"gender={self.gender}, "
+                f"hire_date={self.hire_date}, "
+                f"salary={self.salary}, "
+                f"title={self.title}, "
+                f"dept_no={self.dept_no})")
 
     def toDict(self):
         return {

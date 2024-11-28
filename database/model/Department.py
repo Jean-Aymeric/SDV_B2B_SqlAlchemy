@@ -23,11 +23,6 @@ class Department(AbstractEntity):
     def Emp_no(self) -> int:
         return self.emp_no
 
-    @classmethod
-    def getAll(cls):
-        with Session(Engine.getEngine()) as session:
-            return session.query(cls).all()
-
     def __repr__(self):
         return f"Department(dept_no={self.dept_no}, dept_name={self.dept_name}, emp_no={self.emp_no})"
 
